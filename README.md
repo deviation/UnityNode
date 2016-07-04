@@ -5,6 +5,10 @@ This is an example project where a multiplayer game is created using unity + nod
 
 
 The following node modules are required:
+
 npm install shortid
+
 npm install socket.io
+
 npm install express
+
