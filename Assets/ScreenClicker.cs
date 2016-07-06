@@ -10,7 +10,7 @@ public class ScreenClicker : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetButtonDown ("Fire2"))
+		if (Input.GetButtonDown ("Fire1"))
 			Clicked ();
 	}
 
@@ -19,7 +19,8 @@ public class ScreenClicker : MonoBehaviour {
 		RaycastHit hit = new RaycastHit ();
 
 		if (Physics.Raycast (ray, out hit)) {
-			Debug.Log (hit.collider.gameObject.name);
+			var clickMove = hit.collider.gameObject.GetComponent<ClickMove> ();
+			clickMove.OnClick (hit.point);
 		}
 	}
 }
