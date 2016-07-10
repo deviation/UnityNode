@@ -14,6 +14,7 @@ io.on('connection', function(socket) {
     console.log('client connected, broadcasting spawn, id:', thisPlayerId);
 
     socket.broadcast.emit('spawn', { id: thisPlayerId });
+    socket.broadcast.emit('requestPosition');
 
     players.forEach(function(playerId){
       if(playerId == thisPlayerId)
@@ -27,7 +28,7 @@ io.on('connection', function(socket) {
         data.id = thisPlayerId;
         console.log('client moved', JSON.stringify(data));
 
-        socket.broadcast.emit('move', data)
+        socket.broadcast.emit('move', data);
     });
 
     socket.on('disconnect', function() {
